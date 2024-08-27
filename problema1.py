@@ -11,5 +11,12 @@
 #         ('mundo', 44, 20, 90, 'hola', 'mundo', 44)
 t = input().split()
 m = input().split()
+def convert_to_int(s):
+    try:
+        return int(s)
+    except ValueError:
+        return s
+
 solved = tuple(m + t + m)
+solved = list(map(convert_to_int, solved))
 print(solved)

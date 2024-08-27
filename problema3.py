@@ -9,5 +9,25 @@
 #         20 30 90 90 8 5 90
 #La salida debe ser
 #         [20, [8, [5, [], [], []], [], []], [], [30, [], [], [90, [], [90, [], [90, [], [], []], []], []]]]
-t = input()
-print(t)
+t = list(map(int, input().split() ) )
+
+# numero, izquierda, centro, derecha
+def arbolTernario(numero):
+    return [numero, [], [] , [] ]
+
+def insertar(numero, arbol):
+    if arbol==[]:
+        arbol += arbolTernario(numero)
+    elif numero < arbol[0]:
+        insertar(numero, arbol[1])
+    elif numero == arbol[0]:
+        insertar(numero, arbol[2])
+    else:
+        insertar(numero, arbol[3])
+
+    return arbol
+
+tree = []
+for i in t:
+    insertar(i, tree)
+print(tree)
